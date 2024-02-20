@@ -103,12 +103,12 @@ As I said, I tested quickly but you can try yourself some of the examples you ca
 Mh, prob not, I'm just sharing a few hours I worked on it mostly because there's almost zero documentation about this and I need to reproduce an issue.
 
 - *Why do I have to call M5.begin() if I'm using TFT_eSPI?*
-First without it the display is not working (prob because the init process in TFT_eSPI for GC9A01 is buggy/wrong/incomplete, you can try yourself). Second the M5 lib will give you access to the other features like Speaker, Encoder, Buttons, etc
+First without M5.begin() the display is not working (prob because the init process in TFT_eSPI for GC9A01 is buggy/wrong/incomplete, you can try yourself). Second the M5 lib will give you access to the other features like Speaker, Encoder, Buttons, etc
 
 - *Is it useful?*
 I don't know, this implementation will not be used in production
 
 - *Are there any alternatives to TFT_eSPI?*
-Yes: MGFX are working quite well for very simple tasks. LVGL are VERY VERY complex to use but are almost the best out there for this board.
+Yes: MGFX are working quite well for very simple tasks. LVGL are VERY VERY complex to use but are almost the best out there for this board. It really depends what you need and what you expect. For sure I would prefer a double buffered + looped control draw like MGFX/LVGL then a direct draw/manual control like TFT_eSPI (try bouncing circles to find out the draw issue at the top of the display). 
 
 # This project will end here
